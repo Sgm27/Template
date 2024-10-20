@@ -1,0 +1,37 @@
+5 2
+MaMH1
+thcs1
+2
+MaMH2
+triet hoc
+2
+MaMH3
+lap trinh c++
+3
+MaMH4
+lap trinh huong doi tuong
+3
+MaMH5
+cau truc du lieu&giai thuat
+4
+MaSV1
+Ngo Duc Son
+D22CQCN09-B
+2
+MaMH1
+9 9 10
+MaMH3
+9 9 9 
+MaSV2
+Nguyen Van Son
+D22CQCN03-N
+2
+MaMH2
+4 5 6 
+MaMH5
+6 6 6 
+
+
+
+
+

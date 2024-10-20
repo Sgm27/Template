@@ -1,0 +1,25 @@
+n, m, d = int(input()), int(input()), int(input())
+ 
+field = []
+for _ in range(n):
+    field.append([0] * m)
+ 
+for _ in range(d):
+    xi, yi = int(input()), int(input())
+    for x in range(xi):
+        for y in range(yi):
+            field[x][y] += 1
+ 
+largest = 0
+for row in field:
+    for elem in row:
+        if elem > largest:
+            largest = elem
+ 
+count = 0
+for row in field:
+    for elem in row:
+        if elem == largest:
+            count += 1
+ 
+print(count, largest)

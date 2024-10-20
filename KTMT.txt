@@ -1,0 +1,179 @@
+Tổ chức máy tính:
+bao gồm : CPU, bộ nhớ chính và các tổ chức vào ra.
+CPU : đọc lệnh từ bộ nhớ thực hiện công việc tính toán,giải mã thi hành lệnh
+điều khiển
+Bộ nhớ chính : Nơi lưu trữ lệnh và dữ liệu
+Tổ chức vào ra : Cung cấp các dữ liệu, phường tiện để kết nối với các thiết bị ngoại vi
+A-bus(bus địa chỉ) : Truyền tín hiệu từ CPU đến bộ nhớ chính và các thiết bị ngoại vi
+C-bus(bus điều khiển) : Truyền tín hiệu từ CPU đến bộ nhớ chính và các thiết bị ngoại vi 
+đồng thời cũng nhận lại các tín hiệu từ các thành phần khác về CPU.
+D-bus(bus dữ liệu) : Truyền các thông tin, tín hiệu qua lại giữa CPU và bộ nhớ chính.
+
+Khuôn dạng lệnh của vi xử lý 8086:
+Khuôn dạng lệnh là phương thức biểu diễn lệnh trong hệ thống máy tính:
+    +Khuôn dạnh lệnh gồm 2 thành phần:
+        -mã lệnh(OPCODE) : mã hóa của lệnh mà CPU phải thực hiện
+        -địa chỉ các toán hạng(Address Oprand) : tùy thuộc vào mỗi lệnh mà số lượng toán 
+                                                hạng cũng khác nhau
+        -Một số mẫu toán hạng : toán hạng 3 địa chỉ, toán hạng 2 địa chỉ, toán hạng 1.5
+                                địa chỉ, toán hạng 0 địa chỉ.                                            
+
+Khái niệm kiến trúc máy tính:
+    +Kiến trúc máy tính là ngành khoa học liên quan đến lựa chọn và kết nối các thành
+    phần phần cứng nhằm mục đích tạo ra máy tính đáp ứng các yêu cầu:
+        -Hiệu năng : Càng mạnh càng tốt
+        -Chức năng : Đáp ứng nhiều chức năng
+        -Giá thành : Càng rẻ càng tốt
+    Trong kiến trúc máy tính được cấu thành từ 3 phần con:
+        1.Kiến trúc tập lệnh : hình ảnh kiến trúc máy tính ở mức ngôn ngữ máy.Bao gồm:
+                               tập lệnh, các chế độ địa chỉ, các thanh ghi, khuôn dạng địa chỉ và dữ liệu.
+        2.Vi xử lý : Là mô tả mức thấp các thành phần của hệ thống máy tính
+        3.Thiết kế hệ thống: Bao gồm tất cả thành phần phần cứng của hệ thống.
+
+
+Trình bày các thanh ghi trong VLX 8086
+Khái niệm của thanh ghi:
+    +Các thanh ghi là bộ phận nhớ của CPU
+    +Có kích thước rất nhỏ, số lượng ít, tốc độ rất cao(ngang tốc độ của CPU)
+    +Số lượng thanh ghi phụ thuộc vào thế hệ CPU, kích thước phụ thuộc vào thế hệ CPU.
+Thanh ghi trong VXL 8086:
+    +Thanh ghi đa năng: AX, BX, CX, DX
+    +Thanh ghi chỉ số: DI, SI, SP(Stack pointer), BP(Base Pointer)
+    +Thanh ghi đoạn: CS(Code segment), DS(Data segment), SS(Stack segment), ES(Extra segment).
+    +Con trỏ lệnh: IR(Instruction register), FR(Flag register).
+    +Thanh ghi cờ trạng thái và thanh ghi cờ điều khiển.
+
+Trình bày thanh ghi tích lũy A:
+    +Thanh ghi A là một trong những thanh ghi quan trọng nhất của CPU.
+    +Chức năng của thanh ghi A: 
+        -Lưu toán hạng đầu vào
+        -Lưu trữ kết quả đầu ra
+    +Thanh ghi A có đặc điểm kích thước phụ thuộc từ xử lý trong CPU.
+    +Cũng được sử dụng trong tổ chức trao đổi dữ liệu vào ra.
+
+Chức năng và phương thức hoạt động của bộ đếm chương trình PC(Program Counter):
+    Chức năng : Chức địa chỉ ô nhớ của lệnh tiếp theo mà VXL phải thực hiện.
+    Phương thức hoạt động:
+        +PC chứa địa chỉ ô nhớ của lệnh đầu tiên của chương trình ngay khi nó được kích hoạt
+        và tải vào hệ thống
+        +Khi CPU thực hiện xong một lệnh, địa chỉ của lệnh tiếp theo sẽ được tải vào PC
+        +Kích thước của PC phụ thuộc vào thế hệ CPU : 8bit, 16 bit, 32 bit, 64 bit
+
+Hai dạng kiến trúc của bộ nhớ đệm - cache: Look Aside và Look Through.
+    +Look Aside:
+        -Đặc điểm:
+            +Cache và bộ nhớ chính được kết nối với nhau bằng bus hệ thống.
+            +Cache và bộ nhớ chính "thấy" chu kỳ bus của CPU trong cũng một thời điểm
+        -Ưu điểm:
+            +Thiết kế đơn giản
+            +Miss nhanh:
+                Nếu CPU không tìm thấy dữ liệu trong cache thì nó sẽ tìm kiếm
+                kiếm trong bộ nhớ chính tại cùng một chu kỳ bus.
+        -Nhược điểm:
+            +Hit chậm:
+                Do CPU kết nối với cache bằng bus hệ thống có băng thông hẹp và tần số làm 
+                việc không cao.
+    +Look Through:
+        -Đặc điểm:
+            +Cache nằm giữa CPU và bộ nhớ chính.
+            +Cache thấy chu kỳ bus của CPU trước sau đó truyền lại cho bộ nhớ chính.
+        -Ưu điểm:
+            +Hit nhanh:
+                Do CPU và cache được kết nối với nhau bằng bus riêng có bằng thông rộng và 
+                tần số làm việc cao
+        -Nhược điểm:
+            +Đắt
+            +Thiết kế phức tạp
+            +Miss chậm:
+                Trong trường hợp CPU không tìm thấy dữ liệu mong muốn ở cache thì CPU phải thực hiện 
+                tìm kiếm lại trong bộ nhớ chính ở một chu kỳ bus tiếp theo.
+
+    
+Cơ chế xử lý xen kẽ dòng lệnh (ống lệnh - pipeline):
+    +Chia mỗi lệnh thành 5 giai đoạn:
+        IF: đọc lệnh từ bộ nhớ hoặc cache.
+        ID: giải mã lệnh và đọc các toán hạng
+        EX: thực hiện lệnh, nếu là lệnh truy cập bộ nhớ thì tính toán địa chỉ bộ nhớ.
+        MEM: Truy cập bộ nhớ để đọc / ghi, bỏ qua nếu lệnh không truy cập bộ nhớ.
+        WB: Ghi kết quả vào các thanh ghi
+    +Mỗi giai đoạn được thực thi bởi một đơn vị chức năng khác nhau của CPU, nhằm giảm thời gian 
+    thực hiện trung bình của một lệnh từ đó năng hiệu suất xử lý lệnh của CPU.
+    +Đặc điểm của cơ chế ống lệnh:
+        -Là dạng xử lý song song ở mức lệnh.
+        -Tại một thời điểm hầu hết các đơn vị chức năng trong CPU đều tham gia quá trình xử lý lệnh.
+        -Số lượng lệnh xử lý bằng số giai đoạn lệnh thực hiện.
+        -Số giai đoạn thực hiện lệnh phụ thuộc vào thế hệ CPU.
+
+Các vấn để liên quan đến cơ chế xử lý ống lệnh(pipeline):
+    +Xung đột về tài nguyên:
+        -Xung đột truy cập bộ nhớ
+        -Xung đột truy cập thanh ghi
+    +Xung đột/tranh chấp dữ liệu (Data Hazard)
+        -Vấn đề read after write hazard.
+    +Các câu lệnh rẽ nhánh:
+        -Có điều kiện
+        -Không có điều kiện
+        -Gọi thực hiện và trở về từ chương trình con.
+
+Nêu chức năng và phương thức hoạt động của con trỏ ngăn xếp SP(stack pointer)
+    +Ngăn xếp là kiểu dữ liệu đặc biệt hoạt động theo nguyên tắt FIFO(first in first out).
+    +Con trỏ ngăn xếp SP(Stack pointer) là con trỏ luôn chứa địa chỉ đỉnh ngăn xếp
+    +Có hai thao tác:
+        -Push:
+            SP <- SP + 1   ;tăng địa chỉ của đỉnh ngăn xếp
+            [SP] <- Data   ;gắn dữ liệu cho đỉnh ngăn xếp mới
+        -Pop:
+            R <- [SP]      ;gắn dữ liệu của đỉnh ngăn xếp vào thanh ghi.
+            SP <- SP - 1   ;giảm địa chỉ của đỉnh ngăn xếp.
+
+Thanh ghi cờ(hay thanh ghi trạng thái):
+    +Chức năng : Lưu trữ trạng thái kết quả được tính toán bởi khối tính toán số học-lô gic(ALU).
+                Thường được sử dụng trong các câu lệnh điều kiện hoặc rẽ nhánh, tạo tính logic 
+                cho chương trình.
+    +Gồm hai loại thanh ghi cờ:
+        -Cờ trạng thái
+        -Cờ điều khiển
+Ý nghĩa của các thanh ghi cờ:
+    +Cờ nhớ(CF) : CF = 1 nếu có nhớ / mượn, CF = 0 trong trường hợp ngược lại
+    +Cờ không(ZF) : ZF = 1 nếu kết quả bằng 0, ZF = 0 trong trường hợp ngược lại.
+    +Cờ dấu(SF) : SF = 1 nếu kết quả là một số âm, SF = 0 trong trường hợp ngược lại.
+
+Chế độ địa chỉ của CPU là gì?Mô tả lấy ví dụ các chế độ địa chỉ.
+    +Chế độ địa chỉ là cách thức mà CPU tổ chức các toán hạng, ngoài ra chế độ địa chỉ còn
+    cho phép CPU kiểm tra dạng lệnh, và tìm kiếm toán hạng.
+    +Số lượng chế độ địa chỉ phụ thuộc vào thiết kế CPU.
+
+Một số chế độ địa chỉ thường gặp:
+    +Chế độ địa chỉ tức thì
+        -Toán hạng nguồn là một hằng số
+        -Toán hạng đích là một địa chỉ ô nhớ hoặc một thanh ghi.
+        -Ví dụ : LOAD AL, #1000
+    +Chế độ địa chỉ trực tiếp
+        -Sử dụng một hằng số để biểu diễn địa chỉ một ô nhớ.
+        -Toán hạng còn lại là một thanh ghi hoặc một ô nhớ.
+        -Ví dụ : LOAD AL, 1000
+    +Chế độ địa chỉ gián tiếp qua thanh ghi
+        -Sử dụng một thanh ghi để biểu diễn địa chỉ một ô nhớ.
+        -Toán hạng còn lại là một hằng số, địa chỉ ô nhớ hoặc một thanh ghi
+        -Ví dụ : LOAD AL, (R1)
+    +Chế độ địa chỉ gián tiếp qua ô nhớ
+        -Sử dụng một địa chỉ ô nhớ để biểu diễn một địa chỉ ô nhớ
+        -Toán hạng còn lại là một hằng số, địa chỉ ô nhớ hoặc một thanh ghi.
+        -Ví dụ : LOAD AL, (1000)
+    +Chế độ địa chỉ chỉ số
+        -Một toán hạng là tổng của một thanh ghi và một hằng số.
+        -Toán hạng còn lại là một hằng số, 1 thang ghi hoặc một địa chỉ ô nhớ.
+        -Ví dụ : LOAD AL, R(100)
+    +Chế độ địa chỉ tương đối
+        -Một toán hạng là tổng của một hằng số và PC
+        -Toán hạng còn lại có thể là một hằng số, 1 thanh ghi hoặc 1 địa chỉ ô nhớ.
+        Ví dụ : LOAD AL, 100(PC)
+
+
+
+
+
+
+
+
+
